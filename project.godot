@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Tile Breaker"
+run/main_scene="uid://c1rbo4b2gt7yl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [dotnet]
 
