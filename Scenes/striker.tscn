@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg5wo1q3vkskc"]
+
+[ext_resource type="Texture2D" uid="uid://dc8cowdu0lfjm" path="res://Assets/Sprites/striker.svg" id="1_algrq"]
+[ext_resource type="Script" uid="uid://5hcayai8e07o" path="res://Scripts/Striker.cs" id="1_axd0p"]
+[ext_resource type="AudioStream" uid="uid://dqtrbpdh0a8a" path="res://Assets/Sound/BallHit.mp3" id="3_shoik"]
+
+[sub_resource type="Curve" id="Curve_shoik"]
+_data = [Vector2(0, 0.47191), 0.0, 0.0, 0, 0, Vector2(0.256684, 0.876405), 0.0, 0.0, 0, 0, Vector2(0.684492, 0.696629), -1.63421, -1.63421, 0, 0, Vector2(1, 0.426966), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_kmiru"]
+offsets = PackedFloat32Array(0.440994, 0.819876, 0.84472, 1)
+colors = PackedColorArray(0.967261, 0.271249, 0.251597, 1, 0.902315, 0.540235, 0.191691, 1, 0.890625, 0.588653, 0.180908, 1, 0.89, 0.581467, 0.178, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shoik"]
+
+[node name="Striker" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_axd0p")
+
+[node name="FireParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 15
+lifetime = 0.5
+fract_delta = false
+emission_shape = 2
+emission_sphere_radius = 10.48
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_shoik")
+color_ramp = SubResource("Gradient_kmiru")
+anim_speed_max = 128.0
+
+[node name="Striker" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_algrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_shoik")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.5, -20)
+rect = Rect2(0, 0, 1, 20)
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="Bounce" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("3_shoik")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwm6bnq8fcm51"]
+
+[ext_resource type="Script" uid="uid://doptyu5qrgooq" path="res://Scripts/Tile.cs" id="1_rvq8p"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xsjyq"]
+size = Vector2(150, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvq8p"]
+size = Vector2(150, 40)
+
+[node name="Tile" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 34
+script = ExtResource("1_rvq8p")
+
+[node name="Style" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_xsjyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rvq8p")

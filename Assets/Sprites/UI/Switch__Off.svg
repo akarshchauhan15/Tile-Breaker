@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="19.908026mm"
+   height="19.908031mm"
+   viewBox="0 0 19.908026 19.908031"
+   version="1.1"
+   id="svg1"
+   inkscape:export-batch-path="C:\Users\Akarsh\Documents\Inkscape"
+   inkscape:export-batch-name="Switch_"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="19.908026"
+       height="19.908031"
+       id="page1"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-0.02949556,-46.366358)">
+    <path
+       id="On"
+       style="fill:#264f92;fill-opacity:1;stroke-width:2.64583;stroke-linejoin:bevel;stroke-miterlimit:3.6"
+       d="M 0.11937256,26.458333 H 19.847641 c 0.04979,0 0.08988,0.04009 0.08988,0.08988 v 19.728268 c 0,0.04979 -0.04009,0.08988 -0.08988,0.08988 H 0.11937256 c -0.049792,0 -0.089877,-0.04009 -0.089877,-0.08988 V 26.54821 c 0,-0.04979 0.040085,-0.08988 0.089877,-0.08988 z" />
+    <path
+       id="Off"
+       style="fill:#686f7b;fill-opacity:1;stroke-width:2.64583;stroke-linejoin:bevel;stroke-miterlimit:3.6"
+       d="M 0.11937256,46.366361 H 19.847641 c 0.04979,0 0.08988,0.04009 0.08988,0.08988 v 19.728268 c 0,0.04979 -0.04009,0.08988 -0.08988,0.08988 H 0.11937256 c -0.049792,0 -0.089877,-0.04009 -0.089877,-0.08988 V 46.456238 c 0,-0.04979 0.040085,-0.08988 0.089877,-0.08988 z" />
+  </g>
+</svg>

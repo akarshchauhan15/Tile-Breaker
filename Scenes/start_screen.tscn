@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://bowyyooldjyif"]
+
+[ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="1_i8r30"]
+[ext_resource type="FontFile" uid="uid://ctyq0meae18x4" path="res://Assets/Fonts/Roboto.ttf" id="2_ainjc"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ainjc"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_60ddj"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_5e717"]
+events = [SubResource("InputEventKey_ainjc"), SubResource("InputEventKey_60ddj")]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223755, 0.259613, 0.367188, 1)
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -82.5
+offset_right = 336.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Breaker" type="RichTextLabel" parent="Title"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -50.0
+offset_right = 325.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.167969, 0.167969, 0.167969, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = 10
+theme_override_fonts/normal_font = ExtResource("1_i8r30")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[color=b751bc]B[/color][color=dc3d5a]R[/color][color=ec7200]E[/color][color=ced639]A[/color][color=3cc148]K[/color][color=325bcd]E[/color][color=7a29cf]R[/color]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Tile" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -50.0
+offset_right = -115.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.321569)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("1_i8r30")
+theme_override_font_sizes/font_size = 120
+text = "TILE"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 681.0
+offset_right = 189.0
+offset_bottom = 705.0
+theme_override_fonts/font = ExtResource("2_ainjc")
+theme_override_font_sizes/font_size = 20
+text = "Press Enter To Play"
+
+[node name="LaunchButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+shortcut = SubResource("Shortcut_5e717")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+flat = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true

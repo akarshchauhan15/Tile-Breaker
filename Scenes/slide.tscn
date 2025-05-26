@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuuqfyq2ypdpm"]
+
+[ext_resource type="Script" uid="uid://jtx511pv7tyu" path="res://Scripts/Slide.cs" id="1_ylyes"]
+
+[node name="Slide" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 111.0
+offset_bottom = 40.0
+script = ExtResource("1_ylyes")
