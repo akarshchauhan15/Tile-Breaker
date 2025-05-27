@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwm6bnq8fcm51"]
+[gd_scene load_steps=5 format=3 uid="uid://cwm6bnq8fcm51"]
 
 [ext_resource type="Script" uid="uid://doptyu5qrgooq" path="res://Scripts/Tile.cs" id="1_rvq8p"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xsjyq"]
+polygon = PackedVector2Array(-75, -20, -75, 20, 75, 20, 75, -20)
 
 [sub_resource type="QuadMesh" id="QuadMesh_xsjyq"]
 size = Vector2(150, 40)
@@ -12,6 +15,9 @@ size = Vector2(150, 40)
 collision_layer = 4
 collision_mask = 34
 script = ExtResource("1_rvq8p")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_xsjyq")
 
 [node name="Style" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_xsjyq")

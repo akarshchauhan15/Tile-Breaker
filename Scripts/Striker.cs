@@ -7,18 +7,27 @@ public partial class Striker : CharacterBody2D
 
     int Speed = 750;
     public int BreakLeft;
-
     public Vector2 Direction = Vector2.Zero;
     public TileData.TileDrop CurrentPower = TileData.TileDrop.None;
 
-    AudioStreamPlayer BounceEffect;
-    Hud HUD;
-    PackedScene ParticlesScene;
     public CpuParticles2D FireParticles;
     public Sprite2D Texture;
+    PointLight2D Light;
+
+    AudioStreamPlayer BounceEffect;
+    Hud HUD;
+
+    PackedScene ParticlesScene;
+
+    Tween tween;
 
     public override void _Ready()
     {
+        FireParticles = GetNode<CpuParticles2D>("FireParticles");
+        Texture = GetNode<Sprite2D>("Striker");
+        Light = GetNode<PointLight2D>("PointLight2D");
+        BounceEffect = GetNode<AudioStreamPlayer>("Sound/Bounce");
+
         HUD = GetTree().Root.GetNode<Hud>("Main/HUD");
         OnAllStrikerDissappeared += HUD.EndGame;
 
@@ -28,10 +37,6 @@ public partial class Striker : CharacterBody2D
         GetNode<VisibleOnScreenNotifier2D>("VisibleOnScreenNotifier2D").ScreenExited += OnScreenExited;
 
         ParticlesScene = ResourceLoader.Load<PackedScene>("res://Scenes/particles.tscn");
-        FireParticles = GetNode<CpuParticles2D>("FireParticles");
-
-        BounceEffect = GetNode<AudioStreamPlayer>("Sound/Bounce");
-        Texture = GetNode<Sprite2D>("Striker");
     }
     public override void _Process(double delta)
     {
@@ -76,6 +81,14 @@ public partial class Striker : CharacterBody2D
                 return;
             }
             EmitParticles(Normal, Collider);
+
+            if (tween != null)
+                tween.Kill();
+
+            tween = Light.CreateTween();
+            tween.TweenProperty(Light, "energy", Mathf.Clamp(0.3 + Light.Energy, 0, 0.3), 0.1).AsRelative();
+            tween.TweenProperty(Light, "energy", 0, 0.5);
+
         }
     }
     private void OnScreenExited()

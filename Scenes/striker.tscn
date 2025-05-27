@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg5wo1q3vkskc"]
+[gd_scene load_steps=8 format=3 uid="uid://bg5wo1q3vkskc"]
 
 [ext_resource type="Texture2D" uid="uid://dc8cowdu0lfjm" path="res://Assets/Sprites/striker.svg" id="1_algrq"]
 [ext_resource type="Script" uid="uid://5hcayai8e07o" path="res://Scripts/Striker.cs" id="1_axd0p"]
 [ext_resource type="AudioStream" uid="uid://dqtrbpdh0a8a" path="res://Assets/Sound/BallHit.mp3" id="3_shoik"]
+[ext_resource type="Texture2D" uid="uid://c76a6dqkxlbiy" path="res://Assets/Sprites/shadow.svg" id="4_kmiru"]
 
 [sub_resource type="Curve" id="Curve_shoik"]
 _data = [Vector2(0, 0.47191), 0.0, 0.0, 0, 0, Vector2(0.256684, 0.876405), 0.0, 0.0, 0, 0, Vector2(0.684492, 0.696629), -1.63421, -1.63421, 0, 0, Vector2(1, 0.426966), 0.0, 0.0, 0, 0]
@@ -24,9 +25,14 @@ script = ExtResource("1_axd0p")
 emitting = false
 amount = 15
 lifetime = 0.5
+explosiveness = 0.1
 fract_delta = false
 emission_shape = 2
 emission_sphere_radius = 10.48
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 35.0
 angular_velocity_min = -200.0
 angular_velocity_max = 200.0
 scale_amount_min = 10.0
@@ -45,6 +51,14 @@ shape = SubResource("RectangleShape2D_shoik")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-0.5, -20)
 rect = Rect2(0, 0, 1, 20)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.0
+range_layer_max = 10
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("4_kmiru")
+texture_scale = 0.6
 
 [node name="Sound" type="Node" parent="."]
 

@@ -9,7 +9,7 @@ public partial class Main : CanvasLayer
     public static bool isPlaying = false;
     public static bool TilePlaced = true;
 
-    TilePreset CurrentPreset = TilePresets.SEVENxSEVEN;
+    public static TilePreset CurrentPreset = TilePresets.FOURxONE;
 
     PackedScene Tile = (PackedScene) ResourceLoader.Load("res://Scenes/tile.tscn");
     PackedScene MainStrikerScene = (PackedScene) ResourceLoader.Load("res://Scenes/striker.tscn");

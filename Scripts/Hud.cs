@@ -13,10 +13,39 @@ public partial class Hud : Control
     }
     public void EndGame(bool Win)
     {
+        /*
         Main.isPlaying = false;
-        Main.TilePlaced = false;
+
+        if (Player.Lives <= 0)
+        {
+            PlaceTileButton.Show();
+            Main.TilePlaced = false;
+
+            if (Win)
+                GetNode<Label>("Label/WinLabel").Show();
+            else
+                GetNode<Label>("Label/LoseLabel").Show();
+        }
 
         PlayButton.Show();
-        PlaceTileButton.Show();
+        */
+
+        Main.isPlaying = false;
+        Player.Lives--;
+
+        if (Player.Lives < 0 || Win)
+        {
+            if (Win)
+                GetNode<Label>("Label/WinLabel").Show();
+            else
+                GetNode<Label>("Label/LoseLabel").Show();
+
+            PlaceTileButton.Show();
+            Main.TilePlaced = false;
+
+            return;
+        }
+
+            PlayButton.Show();
     }
 }

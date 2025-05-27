@@ -68,7 +68,7 @@ public partial class Tile : StaticBody2D
                 while (TileInRange)
                 {
                     NewCoord += Direction;
-                    TileInRange = NewCoord.X >= 0 && NewCoord.Y >= 0 && NewCoord.X <= 6 && NewCoord.Y <= 6;
+                    TileInRange = IsTileInRange(NewCoord);
                     if (!TileInRange)
                     break;
 
@@ -86,7 +86,7 @@ public partial class Tile : StaticBody2D
             {
                 Vector2I NewCoord = Coord + Neighbour;
                 bool ExistingTile = HasTile(Container, Coord);
-                bool TileInRange = NewCoord.X >= 0 && NewCoord.Y >= 0 && NewCoord.X <= 6 && NewCoord.Y <= 6;
+                bool TileInRange = IsTileInRange(NewCoord);
 
                 if (ExistingTile || !TileInRange)
                 continue;
@@ -104,7 +104,7 @@ public partial class Tile : StaticBody2D
                 while (TileInRange)
                 {
                     NewCoord += Direction;
-                    TileInRange = NewCoord.X >= 0 && NewCoord.Y >= 0 && NewCoord.X <= 6 && NewCoord.Y <= 6;
+                    TileInRange = IsTileInRange(NewCoord);
                     if (!TileInRange)
                     break;
 
@@ -151,6 +151,10 @@ public partial class Tile : StaticBody2D
         bool HasTile = Container.HasNode($"Tile_{Coords.X}_{Coords.Y}");
 
         return HasTile;
+    }
+    private bool IsTileInRange(Vector2I Coords)
+    {
+        return Coords.X >= 0 && Coords.Y >= 0 && Coords.X <= Main.CurrentPreset.TotalTiles.X - 1 && Coords.Y <= Main.CurrentPreset.TotalTiles.Y - 1 ;  
     }
     private void AddDrop()
     {
