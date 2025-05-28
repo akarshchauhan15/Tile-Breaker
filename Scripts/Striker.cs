@@ -5,7 +5,7 @@ public partial class Striker : CharacterBody2D
     [Signal]
     public delegate void OnAllStrikerDissappearedEventHandler(bool Win);
 
-    int Speed = 750;
+    float Speed = 750;
     public int BreakLeft;
     public Vector2 Direction = Vector2.Zero;
     public TileData.TileDrop CurrentPower = TileData.TileDrop.None;
@@ -14,7 +14,6 @@ public partial class Striker : CharacterBody2D
     public Sprite2D Texture;
     PointLight2D Light;
 
-    AudioStreamPlayer BounceEffect;
     Hud HUD;
 
     PackedScene ParticlesScene;
@@ -26,7 +25,6 @@ public partial class Striker : CharacterBody2D
         FireParticles = GetNode<CpuParticles2D>("FireParticles");
         Texture = GetNode<Sprite2D>("Striker");
         Light = GetNode<PointLight2D>("PointLight2D");
-        BounceEffect = GetNode<AudioStreamPlayer>("Sound/Bounce");
 
         HUD = GetTree().Root.GetNode<Hud>("Main/HUD");
         OnAllStrikerDissappeared += HUD.EndGame;
@@ -48,12 +46,15 @@ public partial class Striker : CharacterBody2D
             Vector2 Normal = Collision.GetNormal();
 
             if (Collider is Player)
+            {
                 Direction = (Direction.Bounce(Normal) + new Vector2(Mathf.Clamp((GlobalPosition - Collider.GlobalPosition).X, -30, 30) / 30, 0)).Normalized();
+                HUD.PlaySound("Hit");
+            }
             else
             {
                 if (Collider is Tile)
                 {
-                    ((Tile)Collider).OnHit();
+                    ((Tile)Collider).OnHit((Collider.GlobalPosition - GlobalPosition).Normalized());
 
                     if (CurrentPower == TileData.TileDrop.Rigidify)
                     {
@@ -64,13 +65,15 @@ public partial class Striker : CharacterBody2D
                             FireParticles.Emitting = false;
                         }
                         BreakLeft -= 1;
+                        HUD.PlaySound("RigidExplosion");
                         return;
                     }
+                    HUD.PlaySound("TileHit");
                 }
+                else
+                    HUD.PlaySound("Hit");
                 Direction = Direction.Bounce(Normal);
             }
-
-            BounceEffect.Play();
 
             if (CurrentPower == TileData.TileDrop.Saver && Collider.Name == "Down")
             {
@@ -89,6 +92,7 @@ public partial class Striker : CharacterBody2D
             tween.TweenProperty(Light, "energy", Mathf.Clamp(0.3 + Light.Energy, 0, 0.3), 0.1).AsRelative();
             tween.TweenProperty(Light, "energy", 0, 0.5);
 
+            Speed += 1 * (float)delta;
         }
     }
     private void OnScreenExited()

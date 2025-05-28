@@ -30,6 +30,8 @@ public partial class BaseDrop : Area2D
         if (!(body is Player))
             return;
 
+        GetNode<Hud>("../../../HUD").PlaySound("DropPickup");
+
         Node StrikerContainer;
         StrikerContainer = Play.GetNode<Node>("Strikers");
 

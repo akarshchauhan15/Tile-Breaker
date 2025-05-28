@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjcpe3eybhdnw"]
+[gd_scene load_steps=5 format=3 uid="uid://cjcpe3eybhdnw"]
 
 [ext_resource type="Script" uid="uid://cfwhi4s30oove" path="res://Scripts/Player.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://biyofxbdta8ke" path="res://Assets/Sprites/player.svg" id="1_v0iea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(194, 15)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cvnsp"]
+polygon = PackedVector2Array(-97, -7.5, -97, 7.5, 97, 7.5, 97, -7.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 10
@@ -22,3 +25,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Timers" type="Node" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_cvnsp")

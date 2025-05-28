@@ -22,9 +22,9 @@ public partial class Tile : StaticBody2D
         Collision = GetNode<CollisionShape2D>("CollisionShape2D");
         SetTagAndDrop();   
     }
-    public void OnHit()
+    public void OnHit(Vector2 HitDirection)
     {
-        PlayDeathAnimation();
+        PlayDeathAnimation(HitDirection);
         if (tileTag == TileData.TileTag.None)
         return;
 
@@ -55,7 +55,7 @@ public partial class Tile : StaticBody2D
                 if (NeighbourTile == null)
                 continue;
 
-                NeighbourTile.CallDeferred(Tile.MethodName.PlayDeathAnimation);
+                NeighbourTile.CallDeferred(Tile.MethodName.PlayDeathAnimation, Neighbour);
             }
         }
         else if (tileTag == TileData.TileTag.CrossExplosion)
@@ -76,7 +76,7 @@ public partial class Tile : StaticBody2D
                     if (ExistingTile == null)
                     continue;
                         
-                    ExistingTile.CallDeferred(Tile.MethodName.PlayDeathAnimation);
+                    ExistingTile.CallDeferred(Tile.MethodName.PlayDeathAnimation, Direction);
                 }
             }
         }
@@ -121,7 +121,7 @@ public partial class Tile : StaticBody2D
 
         AddDrop();
     }
-    public void PlayDeathAnimation()
+    public void PlayDeathAnimation(Vector2 HitDirection)
     {
         Collision.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 
@@ -131,7 +131,8 @@ public partial class Tile : StaticBody2D
 
         tween.TweenProperty(this, "modulate:a", 0, 0.2);
         tween.TweenProperty(this, "scale", new Vector2(0.6f, 0.6f), 0.2).SetEase(Tween.EaseType.In);
-        tween.TweenProperty(this, "global_position", new Vector2(0, -10), 0.1).AsRelative();
+        //tween.TweenProperty(this, "global_position", new Vector2(0, -10), 0.1).AsRelative();
+        tween.TweenProperty(this, "global_position", HitDirection * 10, 0.1).AsRelative().SetTrans(Tween.TransitionType.Quad);
     }
     public Vector2I GetCoordinates(String name)
     {

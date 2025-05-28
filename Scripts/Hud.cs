@@ -7,7 +7,7 @@ public partial class Hud : Control
     Button PlaceTileButton;
     Main main;
 
-    static Array<AudioStreamWav> Audios;
+    Array<AudioStreamPlayer> Audios = new Array<AudioStreamPlayer>();
 
     public override void _Ready()
     {
@@ -15,7 +15,8 @@ public partial class Hud : Control
         PlaceTileButton = GetNode<Button>("PlaceTileButton");
         main = GetParent<Main>();
 
-        GetAudioFiles();
+       foreach (AudioStreamPlayer Audio in GetNode<Node>("Audio").GetChildren())
+            Audios.Add(Audio);
     }
     public void EndGame(bool Win)
     {
@@ -37,28 +38,13 @@ public partial class Hud : Control
 
             PlayButton.Show();
     }
-    public static void PlaySound(int Sound)
+    public void PlaySound(string SoundName)
     {
-        AudioStreamPlayer p = new AudioStreamPlayer();
-        p.Play();
-    }
-    private void GetAudioFiles()
-    {
-        string Path = "res://Assets/Sound";
-        DirAccess dir = DirAccess.Open(Path);
+        AudioStreamPlayer Stream = GetNodeOrNull<AudioStreamPlayer>("Audio/" + SoundName);
 
-        dir.ListDirBegin();
-        string fileName = dir.GetNext();
-
-        while (!string.IsNullOrEmpty(fileName))
-        {
-            if (!dir.CurrentIsDir() && fileName.GetExtension().ToLower() == "wav")
-            {
-                Audios.Add(GD.Load<AudioStreamWav>(Path + "/" + fileName));
-            }
-            fileName = dir.GetNext();
-        }
-
-        dir.ListDirEnd();
+        if (Stream != null)
+            Stream.Play();
+        else
+            GD.Print("Error: Sound not found!");
     }
 }

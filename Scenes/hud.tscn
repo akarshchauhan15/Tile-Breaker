@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbgxqqjlxgn76"]
+[gd_scene load_steps=7 format=3 uid="uid://bbgxqqjlxgn76"]
 
 [ext_resource type="Script" uid="uid://c8f3mfoslsglk" path="res://Scripts/Hud.cs" id="1_fccik"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_fccik"]
+[ext_resource type="AudioStream" uid="uid://dec8tljm06dx3" path="res://Assets/Sound/blipSelect1.wav" id="4_43w4t"]
+[ext_resource type="AudioStream" uid="uid://bvftfwl43ad4v" path="res://Assets/Sound/blipSelect2.wav" id="5_7gr8i"]
+[ext_resource type="AudioStream" uid="uid://bj2dc2tt5tpxm" path="res://Assets/Sound/rigid.wav" id="6_5ep0j"]
+[ext_resource type="AudioStream" uid="uid://5uomfmmyn533" path="res://Assets/Sound/powerUp.wav" id="7_4f5kr"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -75,3 +79,24 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_fccik")
 theme_override_font_sizes/font_size = 80
 text = "YOU LOSE!"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Hit" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_7gr8i")
+bus = &"Game"
+
+[node name="TileHit" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_43w4t")
+bus = &"Game"
+
+[node name="RigidExplosion" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_5ep0j")
+max_polyphony = 3
+bus = &"Game"
+
+[node name="DropPickup" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_4f5kr")
+volume_db = -7.518
+max_polyphony = 3
+bus = &"Game"

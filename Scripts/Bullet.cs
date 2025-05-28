@@ -17,7 +17,7 @@ public partial class Bullet : Area2D
         if (body is not Tile)
             return;
 
-        ((Tile)body).OnHit();
+        ((Tile)body).OnHit(Vector2.Up);
         QueueFree();
     }
 }

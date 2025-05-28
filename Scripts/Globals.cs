@@ -79,7 +79,7 @@ public class TilePreset
 }
 public class TilePresets
 {
-    public static TilePreset SEVENxSEVEN = new TilePreset(new Vector2(7, 7), new Vector2(150, 40), new Vector2(15, 10), new Vector2(130, 80));
+    public static TilePreset SEVENxSEVEN = new TilePreset(new Vector2(7, 7), new Vector2(150, 40), new Vector2(15, 10), new Vector2(145, 80));
     public static TilePreset FOURxONE = new TilePreset(new Vector2(1, 4), new Vector2(1000, 80), new Vector2(15, 10), new Vector2(600, 80));
 }
 
