@@ -5,6 +5,7 @@ public partial class Hud : Control
 {
     Button PlayButton;
     Button PlaceTileButton;
+    AnimationPlayer Anim;
     Main main;
 
     Array<AudioStreamPlayer> Audios = new Array<AudioStreamPlayer>();
@@ -13,9 +14,12 @@ public partial class Hud : Control
     {
         PlayButton = GetNode<Button>("PlayButton");
         PlaceTileButton = GetNode<Button>("PlaceTileButton");
+        Anim = GetNode<AnimationPlayer>("AnimationPlayer");
         main = GetParent<Main>();
 
-       foreach (AudioStreamPlayer Audio in GetNode<Node>("Audio").GetChildren())
+        GetNode<Button>("StartScreen/LaunchButton").Pressed += EnterGame;
+
+        foreach (AudioStreamPlayer Audio in GetNode<Node>("Audio").GetChildren())
             Audios.Add(Audio);
     }
     public void EndGame(bool Win)
@@ -23,7 +27,7 @@ public partial class Hud : Control
         Main.isPlaying = false;
         Player.Lives--;
 
-        if (Player.Lives < 0 || Win)
+        if (Player.Lives <= 0 || Win)
         {
             if (Win)
                 GetNode<Label>("Label/WinLabel").Show();
@@ -47,4 +51,5 @@ public partial class Hud : Control
         else
             GD.Print("Error: Sound not found!");
     }
+    private void EnterGame() => Anim.Play("EnterGame");
 }

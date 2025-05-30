@@ -97,7 +97,7 @@ public partial class Striker : CharacterBody2D
     }
     private void OnScreenExited()
     {
-        if (GetParent().GetChildCount() <= 1)  
+        if (GetParent().GetChildCount() <= 1 && Main.isPlaying)  
             EmitSignal(SignalName.OnAllStrikerDissappeared, false);
         QueueFree();
     }

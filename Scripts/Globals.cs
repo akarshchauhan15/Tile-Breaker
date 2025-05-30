@@ -52,7 +52,7 @@ public class TilePreset
         TotalTiles = totalTiles;
         TileSize = tileSize;
         TileSpacing = tileSpacing;
-        TileOffset = tileOffset;
+        TileOffset = tileSize/2 + tileOffset;
     }
     public void SetSize(Tile tile)
     {
@@ -79,7 +79,8 @@ public class TilePreset
 }
 public class TilePresets
 {
-    public static TilePreset SEVENxSEVEN = new TilePreset(new Vector2(7, 7), new Vector2(150, 40), new Vector2(15, 10), new Vector2(145, 80));
-    public static TilePreset FOURxONE = new TilePreset(new Vector2(1, 4), new Vector2(1000, 80), new Vector2(15, 10), new Vector2(600, 80));
+    public static TilePreset SEVENxSEVEN = new TilePreset(new Vector2(7, 7), new Vector2(150, 40), new Vector2(15, 10), new Vector2(66, 80));
+    public static TilePreset TENxTWELVE = new TilePreset(new Vector2(10, 12), new Vector2(90, 27), new Vector2(8, 8), new Vector2(60, 50));
+    public static TilePreset ONExFOUR = new TilePreset(new Vector2(1, 4), new Vector2(1000, 80), new Vector2(15, 10), new Vector2(100, 80));
 }
 

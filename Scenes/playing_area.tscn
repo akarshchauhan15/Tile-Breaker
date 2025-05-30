@@ -60,3 +60,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Down"]
 shape = SubResource("SegmentShape2D_aisbw")
+
+[node name="DropCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true

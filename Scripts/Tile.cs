@@ -119,6 +119,7 @@ public partial class Tile : StaticBody2D
         if (tileDrop == TileData.TileDrop.None)
             return;
 
+        if (GetNode<Timer>("../../DropCooldownTimer").TimeLeft == 0)
         AddDrop();
     }
     public void PlayDeathAnimation(Vector2 HitDirection)
@@ -169,12 +170,13 @@ public partial class Tile : StaticBody2D
         Drop.GlobalPosition = GlobalPosition;
 
         DropsContainer.CallDeferred(Node.MethodName.AddChild, Drop);
+        GetNode<Timer>("../../DropCooldownTimer").Start();
     }
     private void SetTagAndDrop()
     {
         Random random = new Random();
         int TileTag = random.Next(1, 15);
-        int TileDrop = random.Next(1, 10);
+        int TileDrop = random.Next(1, 20);
 
         switch (TileTag)
         {

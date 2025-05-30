@@ -9,7 +9,7 @@ public partial class Main : CanvasLayer
     public static bool isPlaying = false;
     public static bool TilePlaced = true;
 
-    public static TilePreset CurrentPreset = TilePresets.SEVENxSEVEN;
+    public static TilePreset CurrentPreset = TilePresets.TENxTWELVE;
 
     PackedScene Tile = (PackedScene) ResourceLoader.Load("res://Scenes/tile.tscn");
     PackedScene MainStrikerScene = (PackedScene) ResourceLoader.Load("res://Scenes/striker.tscn");
@@ -45,6 +45,7 @@ public partial class Main : CanvasLayer
 
         Random random = new Random();
         MainStriker.Direction = new Vector2((float)(random.NextSingle()-0.5), -1).Normalized();
+        HUD.GetNode<Button>("PlayButton").Hide();
 
         //HUD.RetrySlide.Show();
         //HUD.SettingsSlide.Hide();
@@ -92,11 +93,11 @@ public partial class Main : CanvasLayer
     {
         int Row = 0;
 
-        while (Row < CurrentPreset.TotalTiles.Y)
+        while (Row < CurrentPreset.TotalTiles.X)
         {
             int Column = 0;
 
-            while (Column < CurrentPreset.TotalTiles.X){
+            while (Column < CurrentPreset.TotalTiles.Y){
                 PlaceTile(Row, Column);
                 Column++;
             }
@@ -114,8 +115,8 @@ public partial class Main : CanvasLayer
         CurrentTile.GlobalPosition = new Vector2(
             CurrentPreset.TileOffset.X + (CurrentPreset.TileSize.X + CurrentPreset.TileSpacing.X) * Column,
             CurrentPreset.TileOffset.Y + (CurrentPreset.TileSize.Y + CurrentPreset.TileSpacing.Y) * Row);
-
-        CurrentTile.GetNode<MeshInstance2D>("Style").SelfModulate = TileData.TileColors[Row%7];
+        
+        CurrentTile.GetNode<MeshInstance2D>("Style").SelfModulate = TileData.TileColors[Mathf.Abs(6 - Row % 13)];
         CurrentTile.Name = Name;
         CurrentTile.Row = Row;
 
