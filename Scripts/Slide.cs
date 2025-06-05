@@ -39,7 +39,7 @@ public partial class Slide : Control
         HiddenPos = GlobalPosition;
         GetOpenPos();
     }
-    private void GetOpenPos() 
+    public void GetOpenPos() 
     {
         switch (Slide_Direction)
         {
@@ -61,14 +61,14 @@ public partial class Slide : Control
                 break;
         }
     }
-    private void OnMouseEntered()
+    public void OnMouseEntered()
     {
         Kill();
         tween = CreateTween();
         tween.Finished += EmitSignal;
         tween.TweenProperty(this, "global_position", OpenPos, Mathf.Lerp(0, Slide_Time, Mathf.Abs((GlobalPosition - OpenPos).Length()) / Progression)).SetTrans(Tween.TransitionType.Sine).SetDelay(Appear_Delay); ;
     }
-    private void OnMouseExited()
+    public void OnMouseExited()
     {
         Kill();
         tween = CreateTween();
@@ -79,12 +79,12 @@ public partial class Slide : Control
         else Del = 0;
         tween.TweenProperty(this, "global_position", HiddenPos, Mathf.Lerp(0, Slide_Time, Mathf.Abs((GlobalPosition - HiddenPos).Length()) / Progression)).SetTrans(Tween.TransitionType.Sine).SetDelay(Del);
     }
-    private void Kill() 
+    public void Kill() 
     {
         if (tween != null)      
             tween.Kill(); 
     }
-    private void EmitSignal()
+    public void EmitSignal()
     {
         bool Exited = true;
         if (GlobalPosition != HiddenPos)

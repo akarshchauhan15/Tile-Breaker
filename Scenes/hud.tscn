@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbgxqqjlxgn76"]
+[gd_scene load_steps=13 format=3 uid="uid://bbgxqqjlxgn76"]
 
 [ext_resource type="Script" uid="uid://c8f3mfoslsglk" path="res://Scripts/Hud.cs" id="1_fccik"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_fccik"]
+[ext_resource type="Script" uid="uid://jtx511pv7tyu" path="res://Scripts/Slide.cs" id="3_43w4t"]
 [ext_resource type="AudioStream" uid="uid://dec8tljm06dx3" path="res://Assets/Sound/blipSelect1.wav" id="4_43w4t"]
 [ext_resource type="AudioStream" uid="uid://bvftfwl43ad4v" path="res://Assets/Sound/blipSelect2.wav" id="5_7gr8i"]
 [ext_resource type="AudioStream" uid="uid://bj2dc2tt5tpxm" path="res://Assets/Sound/rigid.wav" id="6_5ep0j"]
@@ -255,7 +256,73 @@ theme_override_fonts/font = ExtResource("2_fccik")
 theme_override_font_sizes/font_size = 80
 text = "YOU LOSE!"
 
+[node name="Slides" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="RetrySlide" type="Control" parent="Slides"]
+anchors_preset = 0
+offset_left = -147.0
+offset_right = 37.0
+offset_bottom = 38.0
+mouse_filter = 1
+script = ExtResource("3_43w4t")
+Slide_Direction = 1
+Appear_Delay = 0.3
+metadata/_custom_type_script = "uid://jtx511pv7tyu"
+
+[node name="ColorRect" type="ColorRect" parent="Slides/RetrySlide"]
+layout_mode = 0
+offset_left = -35.0
+offset_right = 147.0
+offset_bottom = 301.0
+color = Color(1, 1, 1, 0.188235)
+
+[node name="Label" type="Label" parent="Slides/RetrySlide/ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 60.0
+offset_bottom = 30.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 40
+text = "TileSet"
+
+[node name="GridContainer" type="GridContainer" parent="Slides/RetrySlide/ColorRect/Label"]
+layout_mode = 0
+offset_top = 39.0
+offset_right = 164.0
+offset_bottom = 79.0
+columns = 2
+
+[node name="Button" type="Button" parent="Slides/RetrySlide/ColorRect/Label/GridContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "7x7"
+
+[node name="Button2" type="Button" parent="Slides/RetrySlide/ColorRect/Label/GridContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "8x9"
+
+[node name="Button3" type="Button" parent="Slides/RetrySlide/ColorRect/Label/GridContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "8x9"
+
+[node name="Button4" type="Button" parent="Slides/RetrySlide/ColorRect/Label/GridContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "10x12"
+
 [node name="StartScreen" parent="." instance=ExtResource("7_8jye8")]
+visible = false
 layout_mode = 2
 anchors_preset = 0
 
