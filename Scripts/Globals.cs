@@ -80,8 +80,8 @@ public class TilePreset
 public class TilePresets
 {
     public static TilePreset SEVENxSEVEN = new TilePreset(new Vector2(7, 7), new Vector2(150, 40), new Vector2(15, 10), new Vector2(66, 80));
-    public static TilePreset EIGHTxNINE = new TilePreset(new Vector2(8, 9), new Vector2(140, 36), new Vector2(15, 10), new Vector2(66, 80));
-    public static TilePreset TENxTWELVE = new TilePreset(new Vector2(10, 12), new Vector2(90, 27), new Vector2(8, 8), new Vector2(60, 50));
+    public static TilePreset EIGHTxNINE = new TilePreset(new Vector2(8, 9), new Vector2(120, 36), new Vector2(10, 9), new Vector2(66, 80));
+    public static TilePreset TENxTWELVE = new TilePreset(new Vector2(10, 12), new Vector2(90, 27), new Vector2(8, 8), new Vector2(60, 60));
     public static TilePreset ONExFOUR = new TilePreset(new Vector2(1, 4), new Vector2(1000, 80), new Vector2(15, 10), new Vector2(100, 80));
 }
 

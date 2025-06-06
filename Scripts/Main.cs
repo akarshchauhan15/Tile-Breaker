@@ -10,6 +10,7 @@ public partial class Main : CanvasLayer
     public static bool TilePlaced = true;
 
     public static TilePreset CurrentPreset = TilePresets.TENxTWELVE;
+    TilePreset AppliedPreset = CurrentPreset;
 
     PackedScene Tile = (PackedScene) ResourceLoader.Load("res://Scenes/tile.tscn");
     PackedScene MainStrikerScene = (PackedScene) ResourceLoader.Load("res://Scenes/striker.tscn");
@@ -32,6 +33,8 @@ public partial class Main : CanvasLayer
 
         player = GetNode<Player>("PlayingArea/Player");
         OnGameStarted += player.OnGameStarted;
+
+        GetNode<SettingsSlide>("HUD/Slides/SettingsSlide").TilePresetChanged += SetTile;
 
         AddMainStriker(false);
         SetTile();
@@ -91,6 +94,12 @@ public partial class Main : CanvasLayer
     }
     private void SetTile()
     {
+        if (AppliedPreset != CurrentPreset)
+        {
+            foreach (Node Tile in GetNode<Node>("PlayingArea/Tiles").GetChildren())
+                Tile.Free();
+            AppliedPreset = CurrentPreset;
+        }
         int Row = 0;
 
         while (Row < CurrentPreset.TotalTiles.X)
