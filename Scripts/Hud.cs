@@ -20,6 +20,7 @@ public partial class Hud : Control
         main = GetParent<Main>();
 
         GetNode<Button>("StartScreen/LaunchButton").Pressed += EnterGame;
+        GetNode<CheckButton>("Slides/SettingsSlide/ColorRect/SoundButton").Toggled += SoundButtonToggled;
 
         foreach (AudioStreamPlayer Audio in GetNode<Node>("Audio").GetChildren())
             Audios.Add(Audio);
@@ -39,12 +40,10 @@ public partial class Hud : Control
             Main.isPlaying = false;
             PlaceTileButton.Show();
             Main.TilePlaced = false;
-        }
-        else
-        {
-            
-            PlayButton.Show();
-        }
+            return;
+        }  
+        
+        PlayButton.Show();
     }
     public void PlaySound(string SoundName)
     {
@@ -66,6 +65,10 @@ public partial class Hud : Control
         tween = CreateTween();
         tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720 - HealthPanel.Size.Y), 0.4 * Mathf.InverseLerp(720 - HealthPanel.Size.Y, 720, HealthPanel.Position.Y)).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
         tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720), 0.4).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quad).SetDelay(1);
+    }
+    private void SoundButtonToggled(bool Value)
+    {
+        AudioServer.SetBusMute(1, !Value);
     }
     private void EnterGame() => Anim.Play("EnterGame");
 }

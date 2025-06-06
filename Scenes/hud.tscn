@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbgxqqjlxgn76"]
+[gd_scene load_steps=19 format=3 uid="uid://bbgxqqjlxgn76"]
 
 [ext_resource type="Script" uid="uid://c8f3mfoslsglk" path="res://Scripts/Hud.cs" id="1_fccik"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_fccik"]
@@ -10,6 +10,22 @@
 [ext_resource type="AudioStream" uid="uid://bj2dc2tt5tpxm" path="res://Assets/Sound/rigid.wav" id="6_5ep0j"]
 [ext_resource type="AudioStream" uid="uid://5uomfmmyn533" path="res://Assets/Sound/powerUp.wav" id="7_4f5kr"]
 [ext_resource type="PackedScene" uid="uid://bowyyooldjyif" path="res://Scenes/start_screen.tscn" id="7_8jye8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ep0j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2avg"]
+bg_color = Color(0.259577, 0.2537, 0.43, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssfue"]
+bg_color = Color(0.156737, 0.153351, 0.261719, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piegi"]
 bg_color = Color(0, 0, 0, 0.211765)
@@ -275,15 +291,13 @@ mouse_filter = 1
 script = ExtResource("3_43w4t")
 Slide_Direction = 1
 Slide_Time = 0.5
-Appear_Delay = 0.2
-Hide_Delay = 0.4
 metadata/_custom_type_script = "uid://jtx511pv7tyu"
 
 [node name="ColorRect" type="ColorRect" parent="Slides/SettingsSlide"]
 layout_mode = 1
 offset_right = 221.0
-offset_bottom = 301.0
-color = Color(1, 1, 1, 0.188235)
+offset_bottom = 238.0
+color = Color(0.1836, 0.186207, 0.34, 0.929412)
 
 [node name="Settings" type="Label" parent="Slides/SettingsSlide/ColorRect"]
 layout_mode = 0
@@ -307,28 +321,52 @@ columns = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_5ep0j")
 theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ep0j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ssfue")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfue")
 text = "7x7"
 
 [node name="2" type="Button" parent="Slides/SettingsSlide/ColorRect/Settings/GridContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_5ep0j")
 theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ep0j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ssfue")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfue")
 text = "8x9"
 
 [node name="3" type="Button" parent="Slides/SettingsSlide/ColorRect/Settings/GridContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_5ep0j")
 theme_override_font_sizes/font_size = 25
-text = "8x9"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ep0j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ssfue")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfue")
+text = "10x10"
 
 [node name="4" type="Button" parent="Slides/SettingsSlide/ColorRect/Settings/GridContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_5ep0j")
 theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ep0j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i2avg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ssfue")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ssfue")
 text = "10x12"
 
 [node name="SoundButton" type="CheckButton" parent="Slides/SettingsSlide/ColorRect"]
@@ -343,6 +381,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/h_separation = 16
 theme_override_fonts/font = ExtResource("2_fccik")
 theme_override_font_sizes/font_size = 45
+button_pressed = true
 text = "Sounds"
 
 [node name="LifeIndicator" type="Panel" parent="."]
