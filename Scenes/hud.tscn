@@ -1,13 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbgxqqjlxgn76"]
+[gd_scene load_steps=16 format=3 uid="uid://bbgxqqjlxgn76"]
 
 [ext_resource type="Script" uid="uid://c8f3mfoslsglk" path="res://Scripts/Hud.cs" id="1_fccik"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_fccik"]
 [ext_resource type="Script" uid="uid://4j8dy5fapqvi" path="res://Scripts/SettingsSlide.cs" id="3_43w4t"]
+[ext_resource type="FontFile" uid="uid://bjgovg84m6sxx" path="res://Assets/Fonts/Lexend-Medium.ttf" id="4_5ep0j"]
 [ext_resource type="AudioStream" uid="uid://dec8tljm06dx3" path="res://Assets/Sound/blipSelect1.wav" id="4_43w4t"]
+[ext_resource type="Texture2D" uid="uid://sknwu7vpek6a" path="res://Assets/Sprites/heart_pixelated.png" id="5_4f5kr"]
 [ext_resource type="AudioStream" uid="uid://bvftfwl43ad4v" path="res://Assets/Sound/blipSelect2.wav" id="5_7gr8i"]
 [ext_resource type="AudioStream" uid="uid://bj2dc2tt5tpxm" path="res://Assets/Sound/rigid.wav" id="6_5ep0j"]
 [ext_resource type="AudioStream" uid="uid://5uomfmmyn533" path="res://Assets/Sound/powerUp.wav" id="7_4f5kr"]
 [ext_resource type="PackedScene" uid="uid://bowyyooldjyif" path="res://Scenes/start_screen.tscn" id="7_8jye8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piegi"]
+bg_color = Color(0, 0, 0, 0.211765)
 
 [sub_resource type="Animation" id="Animation_7gr8i"]
 resource_name = "Default"
@@ -340,26 +345,50 @@ theme_override_fonts/font = ExtResource("2_fccik")
 theme_override_font_sizes/font_size = 45
 text = "Sounds"
 
-[node name="StartScreen" parent="." instance=ExtResource("7_8jye8")]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-
-[node name="ColorRect" parent="StartScreen" index="0"]
+[node name="LifeIndicator" type="Panel" parent="."]
+layout_mode = 0
 offset_top = 720.0
-offset_bottom = 720.0
-color = Color(0.1952, 0.2264, 0.32, 1)
+offset_right = 144.0
+offset_bottom = 779.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_piegi")
 
-[node name="Title" parent="StartScreen" index="1"]
-offset_top = 360.0
-offset_bottom = 485.0
-scale = Vector2(1, 1e-05)
+[node name="Lives" type="Label" parent="LifeIndicator"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 103.0
+offset_top = -25.5
+offset_right = 136.0
+offset_bottom = 28.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
 
-[node name="Label" parent="StartScreen" index="2"]
-text = "Click anywhere to play"
+[node name="x" type="Label" parent="LifeIndicator"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = -35.0
+offset_right = 97.0
+offset_bottom = 45.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_5ep0j")
+theme_override_font_sizes/font_size = 50
+text = "×"
 
-[node name="LaunchButton" parent="StartScreen" index="3"]
-disabled = true
+[node name="TextureRect" type="TextureRect" parent="LifeIndicator"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 63.0
+offset_bottom = 56.0
+texture = ExtResource("5_4f5kr")
+stretch_mode = 4
 
 [node name="Audio" type="Node" parent="."]
 
@@ -388,5 +417,26 @@ libraries = {
 &"": SubResource("AnimationLibrary_5ep0j")
 }
 autoplay = "Default"
+
+[node name="StartScreen" parent="." instance=ExtResource("7_8jye8")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[node name="ColorRect" parent="StartScreen" index="0"]
+offset_top = 720.0
+offset_bottom = 720.0
+color = Color(0.1952, 0.2264, 0.32, 1)
+
+[node name="Title" parent="StartScreen" index="1"]
+offset_top = 360.0
+offset_bottom = 485.0
+scale = Vector2(1, 1e-05)
+
+[node name="Label" parent="StartScreen" index="2"]
+text = "Click anywhere to play"
+
+[node name="LaunchButton" parent="StartScreen" index="3"]
+disabled = true
 
 [editable path="StartScreen"]

@@ -24,7 +24,7 @@ public partial class Player : CharacterBody2D
     }
     public override void _Process(double delta)
     {
-        if (Main.isPlaying || Main.TilePlaced){
+        if (Main.isPlaying){
        
             Vector2 Pos;
 
