@@ -15,11 +15,15 @@ run/main_scene="uid://c1rbo4b2gt7yl"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ConfigController="*res://Scripts/ConfigController.cs"
+
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/aspect="expand"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

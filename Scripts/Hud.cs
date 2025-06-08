@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System.Data;
 
 public partial class Hud : Control
 {
@@ -8,6 +7,7 @@ public partial class Hud : Control
     Button PlaceTileButton;
     AnimationPlayer Anim;
     Main main;
+    Button SoundButton;
 
     Array<AudioStreamPlayer> Audios = new Array<AudioStreamPlayer>();
     Tween tween;
@@ -18,12 +18,14 @@ public partial class Hud : Control
         PlaceTileButton = GetNode<Button>("PlaceTileButton");
         Anim = GetNode<AnimationPlayer>("AnimationPlayer");
         main = GetParent<Main>();
+        SoundButton = GetNode<CheckButton>("Slides/SettingsSlide/ColorRect/Settings/SoundButton");
 
         GetNode<Button>("StartScreen/LaunchButton").Pressed += EnterGame;
-        GetNode<CheckButton>("Slides/SettingsSlide/ColorRect/SoundButton").Toggled += SoundButtonToggled;
+        SoundButton.Toggled += SoundButtonToggled;
 
         foreach (AudioStreamPlayer Audio in GetNode<Node>("Audio").GetChildren())
             Audios.Add(Audio);
+        SetSettings();
     }
     public void EndGame(bool Win)
     { 
@@ -66,9 +68,15 @@ public partial class Hud : Control
         tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720 - HealthPanel.Size.Y), 0.4 * Mathf.InverseLerp(720 - HealthPanel.Size.Y, 720, HealthPanel.Position.Y)).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
         tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720), 0.4).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quad).SetDelay(1);
     }
-    private void SoundButtonToggled(bool Value)
+    private void SetSettings()
     {
+        Main.CurrentPreset = SettingsSlide.AllTilePresets[(int) ConfigController.config.GetValue("Settings", "Tileset", 0)];
+        SoundButton.ButtonPressed = (bool) ConfigController.config.GetValue("Settings", "Sounds", true);
+    }
+    private void SoundButtonToggled(bool Value)
+    { 
         AudioServer.SetBusMute(1, !Value);
+        ConfigController.SaveSetting("Settings", "Sounds", Value);
     }
     private void EnterGame() => Anim.Play("EnterGame");
 }
