@@ -91,7 +91,7 @@ public partial class Main : CanvasLayer
 
         Tween tween = MainStriker.CreateTween();
         tween.SetParallel();
-        tween.TweenProperty(MainStriker.GetNode<Sprite2D>("Striker"), "scale", new Vector2(0.05f, 0.05f), 0.5).From(Vector2.Zero).SetEase(Tween.EaseType.InOut);
+        tween.TweenProperty(MainStriker.GetNode<Sprite2D>("Striker"), "scale", new Vector2(0.05f, 0.05f), 0.4).From(Vector2.Zero).SetTrans(Tween.TransitionType.Quad);
     }
     private void SetTile()
     {
