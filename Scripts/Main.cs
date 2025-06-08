@@ -73,6 +73,7 @@ public partial class Main : CanvasLayer
         GetNode<Player>("PlayingArea/Player").GlobalPosition = new Vector2(640, 657);
 
         Player.Lives = 3;
+        Player.Score = 0;
         AddMainStriker(true);
 
         HUD.GetNode<Button>("PlayButton").Show();

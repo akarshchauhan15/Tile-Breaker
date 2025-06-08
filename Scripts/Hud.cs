@@ -8,6 +8,7 @@ public partial class Hud : Control
     AnimationPlayer Anim;
     Main main;
     Button SoundButton;
+    static Label ScoreLabel;
 
     Array<AudioStreamPlayer> Audios = new Array<AudioStreamPlayer>();
     Tween tween;
@@ -18,6 +19,7 @@ public partial class Hud : Control
         PlaceTileButton = GetNode<Button>("PlaceTileButton");
         Anim = GetNode<AnimationPlayer>("AnimationPlayer");
         main = GetParent<Main>();
+        ScoreLabel = GetNode<Label>("Slides/SettingsSlide/ColorRect/Score");
         SoundButton = GetNode<CheckButton>("Slides/SettingsSlide/ColorRect/Settings/SoundButton");
 
         GetNode<Button>("StartScreen/LaunchButton").Pressed += EnterGame;
@@ -28,12 +30,12 @@ public partial class Hud : Control
         SetSettings();
     }
     public void EndGame(bool Win)
-    { 
+    {
         Player.Lives--;
-        ShowLifeInformation(Player.Lives);
 
         if (Player.Lives <= 0 || Win)
         {
+            AddScore(Player.Lives * 120);
             if (Win)
                 GetNode<Label>("Label/WinLabel").Show();
             else
@@ -42,10 +44,12 @@ public partial class Hud : Control
             Main.isPlaying = false;
             PlaceTileButton.Show();
             Main.TilePlaced = false;
-            return;
-        }  
-        
-        PlayButton.Show();
+        }
+        else
+        {
+            ShowLifeInformation(Player.Lives);
+            PlayButton.Show();
+        }
     }
     public void PlaySound(string SoundName)
     {
@@ -55,6 +59,13 @@ public partial class Hud : Control
             Stream.Play();
         else
             GD.Print("Error: Sound not found!");
+    }
+    public static void AddScore(int Score)
+    {
+        if (!Main.isPlaying)
+            return;
+        Player.Score += Score;
+        ScoreLabel.Text = Player.Score.ToString();
     }
     private void ShowLifeInformation(int Lives)
     {

@@ -29,6 +29,7 @@ public partial class Slide : Control
     public override void _Ready()
     {
         MouseEntered += OnMouseEntered;
+        MouseExited += OnMouseExited;
         GetNode<ColorRect>("ColorRect").MouseExited += OnMouseExited;
 
         CaseSize = GetNode<ColorRect>("ColorRect").Size;
@@ -65,14 +66,14 @@ public partial class Slide : Control
     {
         Kill();
         tween = CreateTween();
-        tween.Finished += EmitSignal;
+        tween.Finished += () => EmitSignal(false);
         tween.TweenProperty(this, "global_position", OpenPos, Mathf.Lerp(0, Slide_Time, Mathf.Abs((GlobalPosition - OpenPos).Length()) / Progression)).SetTrans(Tween.TransitionType.Sine).SetDelay(Appear_Delay); ;
     }
     public void OnMouseExited()
     {
         Kill();
         tween = CreateTween();
-        tween.Finished += EmitSignal;
+        tween.Finished += () => EmitSignal(true);
 
         float Del;
         if (GlobalPosition == OpenPos) Del = Hide_Delay;
@@ -84,12 +85,8 @@ public partial class Slide : Control
         if (tween != null)      
             tween.Kill(); 
     }
-    public void EmitSignal()
+    public void EmitSignal(bool Hidden)
     {
-        bool Exited = true;
-        if (GlobalPosition != HiddenPos)
-            Exited = false;
-
-        EmitSignal(SignalName.MotionCompleted, Exited);
+        EmitSignal(SignalName.MotionCompleted, Hidden);
     }
 }

@@ -82,4 +82,3 @@ public class TilePresets
     public static TilePreset TENxTWELVE = new TilePreset(new Vector2(10, 12), new Vector2(90, 27), new Vector2(8, 8), new Vector2(60, 60));
     public static TilePreset ONExFOUR = new TilePreset(new Vector2(1, 4), new Vector2(1000, 80), new Vector2(15, 10), new Vector2(100, 80));
 }
-

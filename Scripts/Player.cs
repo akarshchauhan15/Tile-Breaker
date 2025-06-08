@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
 
     public int BulletCount = 0;
     public static int Lives = 3;
+    public static int Score = 0;
     public override void _Ready()
     {
         CollisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
@@ -88,5 +89,6 @@ public partial class Player : CharacterBody2D
         if (BulletCount > 0)
         GetNode<Timer>("BulletTimer").Start();
     }
+
     private void OnTimerTimeout() => TransformSize(false);
 }

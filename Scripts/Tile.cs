@@ -124,6 +124,7 @@ public partial class Tile : StaticBody2D
     }
     public void PlayDeathAnimation(Vector2 HitDirection)
     {
+        Hud.AddScore(10);
         Collision.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 
         Tween tween = CreateTween();
@@ -132,7 +133,6 @@ public partial class Tile : StaticBody2D
 
         tween.TweenProperty(this, "modulate:a", 0, 0.2);
         tween.TweenProperty(this, "scale", new Vector2(0.6f, 0.6f), 0.2).SetEase(Tween.EaseType.In);
-        //tween.TweenProperty(this, "global_position", new Vector2(0, -10), 0.1).AsRelative();
         tween.TweenProperty(this, "global_position", HitDirection * 10, 0.1).AsRelative().SetTrans(Tween.TransitionType.Quad);
     }
     public Vector2I GetCoordinates(String name)
