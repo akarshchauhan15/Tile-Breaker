@@ -31,7 +31,7 @@ public partial class RetrySlide : Slide
         RetryButton.Text = Texts[2];
         RetryButton.Disabled = true;
 
-        Player.Lives = 0;
+        Player.Lives = 1;
         GetNode<Hud>("../../").EndGame(false);
     }
     private void ResetButton(bool Hidded)

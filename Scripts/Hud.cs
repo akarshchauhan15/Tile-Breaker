@@ -9,7 +9,7 @@ public partial class Hud : Control
     AnimationPlayer Anim;
     Main main;
     Button SoundButton;
-    static Label ScoreLabel;
+    public static Label ScoreLabel;
 
     Array<AudioStreamPlayer> Audios = new Array<AudioStreamPlayer>();
     Tween tween;
@@ -30,7 +30,7 @@ public partial class Hud : Control
             Audios.Add(Audio);
 
         SetSettings();
-        SetScoreList();
+        SetScoreList(true);
     }
     public void EndGame(bool Win)
     {
@@ -43,14 +43,16 @@ public partial class Hud : Control
             {
                 GetNode<Label>("Label/WinLabel").Show();
                 ScoreController.AddScores(Player.Score);
-                SetScoreList();
+                SetScoreList(false);
             }
             else
                 GetNode<Label>("Label/LoseLabel").Show();
 
             Main.isPlaying = false;
-            PlaceTileButton.Show();
             Main.TilePlaced = false;
+            PlaceTileButton.Show();
+            
+            GetNode<Slide>("Slides/RetrySlide").Hide();
         }
         else
         {
@@ -83,16 +85,18 @@ public partial class Hud : Control
             tween.Kill();
 
         tween = CreateTween();
-        tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720 - HealthPanel.Size.Y), 0.4 * Mathf.InverseLerp(720 - HealthPanel.Size.Y, 720, HealthPanel.Position.Y)).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720), 0.4).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quad).SetDelay(1);
+        tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720 - HealthPanel.Size.Y), 0.3 * Mathf.InverseLerp(720 - HealthPanel.Size.Y, 720, HealthPanel.Position.Y)).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
+        tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720), 0.3).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quad).SetDelay(0.7);
     }
-    private void SetScoreList()
+    private void SetScoreList(bool FirstLoad)
     {
         ScoreController.LoadScores();
 
         Tuple<string, string> Score = ScoreController.GetScoreListString();
         GetNode<Label>("Slides/ScoreSlide/ColorRect/ScoreList").Text = Score.Item1;
         GetNode<Label>("Slides/ScoreSlide/ColorRect/DateList").Text = Score.Item2;
+
+        GetNode<Label>("Slides/ScoreSlide/ColorRect/NoScorePrompt").Visible = FirstLoad && Score.Item1 == "";
     }
     private void SetSettings()
     {

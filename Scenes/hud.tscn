@@ -317,7 +317,7 @@ metadata/_custom_type_script = "uid://jtx511pv7tyu"
 [node name="ColorRect" type="ColorRect" parent="Slides/SettingsSlide"]
 layout_mode = 1
 offset_right = 221.0
-offset_bottom = 238.0
+offset_bottom = 263.0
 color = Color(0.1836, 0.186207, 0.34, 0.929412)
 
 [node name="Settings" type="Label" parent="Slides/SettingsSlide/ColorRect"]
@@ -404,6 +404,13 @@ theme_override_font_sizes/font_size = 45
 button_pressed = true
 text = "Sounds"
 
+[node name="Version" type="Label" parent="Slides/SettingsSlide/ColorRect/Settings"]
+offset_top = 225.0
+offset_right = 217.0
+offset_bottom = 245.0
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 22
+
 [node name="Score" type="Label" parent="Slides/SettingsSlide/ColorRect"]
 layout_mode = 0
 offset_left = 231.0
@@ -420,6 +427,7 @@ offset_left = 1223.0
 offset_right = 1418.0
 offset_bottom = 45.0
 script = ExtResource("5_piegi")
+Slide_Time = 0.4
 metadata/_custom_type_script = "uid://jtx511pv7tyu"
 
 [node name="ColorRect" type="ColorRect" parent="Slides/RetrySlide"]
@@ -462,8 +470,9 @@ offset_right = 49.0
 offset_bottom = 720.0
 script = ExtResource("6_piegi")
 Slide_Direction = 1
-Slide_Time = 0.5
-Appear_Delay = 0.6
+Slide_Time = 0.46
+Appear_Delay = 0.3
+Hide_Delay = 0.2
 metadata/_custom_type_script = "uid://jtx511pv7tyu"
 
 [node name="ColorRect" type="ColorRect" parent="Slides/ScoreSlide"]
@@ -477,6 +486,7 @@ grow_vertical = 0
 color = Color(0.184314, 0.184314, 0.341176, 0.929412)
 
 [node name="Score" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 227.0
@@ -486,6 +496,7 @@ theme_override_font_sizes/font_size = 48
 text = "HIGHSCORES"
 
 [node name="ScoreList" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 69.0
 offset_right = 85.0
@@ -496,6 +507,7 @@ horizontal_alignment = 2
 justification_flags = 227
 
 [node name="DateList" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+layout_mode = 0
 offset_left = 101.0
 offset_top = 69.0
 offset_right = 241.0
@@ -503,6 +515,20 @@ offset_bottom = 406.0
 theme_override_fonts/font = ExtResource("2_fccik")
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 2
+
+[node name="NoScorePrompt" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 69.0
+offset_right = 266.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 26
+text = "No previos high scores are found.
+
+Try playing few rounds to add some to the list."
+autowrap_mode = 2
+uppercase = true
 
 [node name="LifeIndicator" type="Panel" parent="."]
 layout_mode = 0

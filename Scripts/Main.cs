@@ -48,10 +48,10 @@ public partial class Main : CanvasLayer
 
         Random random = new Random();
         MainStriker.Direction = new Vector2((float)(random.NextSingle()-0.5), -1).Normalized();
-        HUD.GetNode<Button>("PlayButton").Hide();
 
-        //HUD.RetrySlide.Show();
-        //HUD.SettingsSlide.Hide();
+        Hud.ScoreLabel.Text = "0";
+        HUD.GetNode<Button>("PlayButton").Hide();
+        HUD.GetNode<Slide>("Slides/RetrySlide").Show();
     }
     public void OnTilePlaceButtonPressed()
     {

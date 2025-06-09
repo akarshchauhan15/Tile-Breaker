@@ -11,6 +11,8 @@ public partial class SettingsSlide : Slide
         base._Ready();
         foreach (Button button in GetNode<GridContainer>("ColorRect/Settings/GridContainer").GetChildren())
             button.Pressed += () => OnTileSetSelected(button.Name.ToString().ToInt() - 1);;
+
+        GetNode<Label>("ColorRect/Settings/Version").Text = "VERSION " + ProjectSettings.GetSetting("application/config/version").ToString();
     }
     private void OnTileSetSelected(int Selected)
     {
