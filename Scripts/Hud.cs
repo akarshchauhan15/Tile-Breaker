@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System;
 
 public partial class Hud : Control
 {
@@ -27,7 +28,9 @@ public partial class Hud : Control
 
         foreach (AudioStreamPlayer Audio in GetNode<Node>("Audio").GetChildren())
             Audios.Add(Audio);
+
         SetSettings();
+        SetScoreList();
     }
     public void EndGame(bool Win)
     {
@@ -37,7 +40,11 @@ public partial class Hud : Control
         {
             AddScore(Player.Lives * 120);
             if (Win)
+            {
                 GetNode<Label>("Label/WinLabel").Show();
+                ScoreController.AddScores(Player.Score);
+                SetScoreList();
+            }
             else
                 GetNode<Label>("Label/LoseLabel").Show();
 
@@ -78,6 +85,14 @@ public partial class Hud : Control
         tween = CreateTween();
         tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720 - HealthPanel.Size.Y), 0.4 * Mathf.InverseLerp(720 - HealthPanel.Size.Y, 720, HealthPanel.Position.Y)).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Quad);
         tween.TweenProperty(HealthPanel, "position", new Vector2(0, 720), 0.4).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Quad).SetDelay(1);
+    }
+    private void SetScoreList()
+    {
+        ScoreController.LoadScores();
+
+        Tuple<string, string> Score = ScoreController.GetScoreListString();
+        GetNode<Label>("Slides/ScoreSlide/ColorRect/ScoreList").Text = Score.Item1;
+        GetNode<Label>("Slides/ScoreSlide/ColorRect/DateList").Text = Score.Item2;
     }
     private void SetSettings()
     {

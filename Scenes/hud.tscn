@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbgxqqjlxgn76"]
+[gd_scene load_steps=21 format=3 uid="uid://bbgxqqjlxgn76"]
 
 [ext_resource type="Script" uid="uid://c8f3mfoslsglk" path="res://Scripts/Hud.cs" id="1_fccik"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_fccik"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bvftfwl43ad4v" path="res://Assets/Sound/blipSelect2.wav" id="5_7gr8i"]
 [ext_resource type="Script" uid="uid://cpfyxjax8ihq8" path="res://Scripts/RetrySlide.cs" id="5_piegi"]
 [ext_resource type="AudioStream" uid="uid://bj2dc2tt5tpxm" path="res://Assets/Sound/rigid.wav" id="6_5ep0j"]
+[ext_resource type="Script" uid="uid://jtx511pv7tyu" path="res://Scripts/Slide.cs" id="6_piegi"]
 [ext_resource type="AudioStream" uid="uid://5uomfmmyn533" path="res://Assets/Sound/powerUp.wav" id="7_4f5kr"]
 [ext_resource type="PackedScene" uid="uid://bowyyooldjyif" path="res://Scenes/start_screen.tscn" id="7_8jye8"]
 
@@ -126,6 +127,18 @@ tracks/5/keys = {
 "args": [&"Blink", -1, 1.0, false],
 "method": &"play"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("StartScreen:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_43w4t"]
@@ -441,6 +454,56 @@ disabled = true
 text = "Retry?"
 flat = true
 
+[node name="ScoreSlide" type="Control" parent="Slides"]
+anchors_preset = 0
+offset_left = -266.0
+offset_top = 662.0
+offset_right = 49.0
+offset_bottom = 720.0
+script = ExtResource("6_piegi")
+Slide_Direction = 1
+Slide_Time = 0.5
+Appear_Delay = 0.6
+metadata/_custom_type_script = "uid://jtx511pv7tyu"
+
+[node name="ColorRect" type="ColorRect" parent="Slides/ScoreSlide"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -421.0
+offset_right = 266.0
+grow_vertical = 0
+color = Color(0.184314, 0.184314, 0.341176, 0.929412)
+
+[node name="Score" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 227.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 48
+text = "HIGHSCORES"
+
+[node name="ScoreList" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+offset_left = 10.0
+offset_top = 69.0
+offset_right = 85.0
+offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+justification_flags = 227
+
+[node name="DateList" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+offset_left = 101.0
+offset_top = 69.0
+offset_right = 241.0
+offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 2
+
 [node name="LifeIndicator" type="Panel" parent="."]
 layout_mode = 0
 offset_top = 720.0
@@ -527,10 +590,6 @@ offset_top = -83.924
 offset_bottom = 41.076
 
 [node name="Label" parent="StartScreen" index="2"]
-modulate = Color(1, 1, 1, 0)
 text = "Click anywhere to play"
-
-[node name="LaunchButton" parent="StartScreen" index="3"]
-disabled = true
 
 [editable path="StartScreen"]
