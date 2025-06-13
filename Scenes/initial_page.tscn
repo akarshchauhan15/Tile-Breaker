@@ -1,7 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgktk022u7squ"]
+[gd_scene load_steps=8 format=3 uid="uid://dgktk022u7squ"]
 
+[ext_resource type="Script" uid="uid://b27ovs5x51ikp" path="res://Scripts/InitialPage.cs" id="1_37ig4"]
 [ext_resource type="FontFile" uid="uid://bjgovg84m6sxx" path="res://Assets/Fonts/Lexend-Medium.ttf" id="1_hqrgh"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_37ig4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37ig4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2teh5"]
+bg_color = Color(0.297, 0.330733, 0.55, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.196533, 0.211995, 0.3125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xvgg"]
+bg_color = Color(0.1944, 0.21648, 0.36, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.196533, 0.211995, 0.3125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gk4j"]
+bg_color = Color(0.2322, 0.258573, 0.43, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.196533, 0.211995, 0.3125, 1)
 
 [node name="InitialPage" type="Control"]
 layout_mode = 3
@@ -10,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_37ig4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -20,28 +48,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.209747, 0.247765, 0.308594, 1)
 
-[node name="Label2" type="Label" parent="."]
+[node name="Counter" type="Label" parent="."]
 layout_mode = 1
-offset_left = 1172.0
+offset_left = 1157.0
 offset_top = 642.0
 offset_right = 1238.0
 offset_bottom = 692.0
 theme_override_fonts/font = ExtResource("1_hqrgh")
 theme_override_font_sizes/font_size = 40
 text = "1/3"
+horizontal_alignment = 2
 
-[node name="1" type="Control" parent="."]
-visible = false
+[node name="Pages" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Breaker" type="RichTextLabel" parent="1"]
+[node name="1" type="Control" parent="Pages"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Breaker" type="RichTextLabel" parent="Pages/1"]
 clip_contents = false
 layout_mode = 1
 offset_left = 38.0
 offset_top = 37.0
-offset_right = 963.0
+offset_right = 942.0
 offset_bottom = 112.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.167969, 0.167969, 0.167969, 1)
@@ -55,28 +88,31 @@ text = "[outline_color=000000]WELCOME TO TILE [/outline_color][color=b751bc]B[/c
 fit_content = true
 autowrap_mode = 0
 
-[node name="Label" type="Label" parent="1"]
+[node name="Label" type="Label" parent="Pages/1"]
 layout_mode = 1
 offset_left = 59.0
 offset_top = 224.0
 offset_right = 1186.0
 offset_bottom = 467.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.470588)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("1_hqrgh")
 theme_override_font_sizes/font_size = 30
 text = "Tile Breaker is a clone of Breakout originally developed by Atari.
 
 This tutorial page only appears on initial launch. It will guide you about the basics of this game.
 
-Click to continue."
+Click to anywhere to continue."
 autowrap_mode = 2
 
-[node name="2" type="Control" parent="."]
+[node name="2" type="Control" parent="Pages"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Breaker" type="RichTextLabel" parent="2"]
+[node name="Breaker" type="RichTextLabel" parent="Pages/2"]
 clip_contents = false
 layout_mode = 1
 offset_left = 38.0
@@ -95,12 +131,15 @@ text = "[outline_color=000000]EXPLORING [/outline_color][color=b751bc]F[/color][
 fit_content = true
 autowrap_mode = 0
 
-[node name="Label" type="Label" parent="2"]
+[node name="Label" type="Label" parent="Pages/2"]
 layout_mode = 1
 offset_left = 59.0
 offset_top = 224.0
 offset_right = 1186.0
 offset_bottom = 467.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.470588)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("1_hqrgh")
 theme_override_font_sizes/font_size = 30
 text = "The game is designed to be played with a mouse only.
@@ -112,12 +151,13 @@ Top-Right - Retry Ongoing Game
 Bottom-Left - Previous Scores"
 autowrap_mode = 2
 
-[node name="3" type="Control" parent="."]
+[node name="3" type="Control" parent="Pages"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Breaker" type="RichTextLabel" parent="3"]
+[node name="Breaker" type="RichTextLabel" parent="Pages/3"]
 clip_contents = false
 layout_mode = 1
 offset_left = 38.0
@@ -136,13 +176,51 @@ text = "[outline_color=000000]ADDITIONAL [/outline_color][color=b751bc]I[/color]
 fit_content = true
 autowrap_mode = 0
 
-[node name="Label" type="Label" parent="3"]
+[node name="Label" type="Label" parent="Pages/3"]
 layout_mode = 1
 offset_left = 59.0
 offset_top = 224.0
 offset_right = 1186.0
 offset_bottom = 467.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.470588)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("1_hqrgh")
 theme_override_font_sizes/font_size = 30
-text = "The game'"
+text = "The game's source code is freely availiable on Github.
+
+Report any bugs or suggest a new feature in issues tab.
+
+You're good to go now.
+Enjoy."
 autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="PreviousButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -86.0
+offset_right = 226.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_hqrgh")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_37ig4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2teh5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0xvgg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8gk4j")
+text = "PREVIOUS"

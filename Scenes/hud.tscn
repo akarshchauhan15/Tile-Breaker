@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbgxqqjlxgn76"]
+[gd_scene load_steps=23 format=3 uid="uid://bbgxqqjlxgn76"]
 
 [ext_resource type="Script" uid="uid://c8f3mfoslsglk" path="res://Scripts/Hud.cs" id="1_fccik"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_fccik"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://jtx511pv7tyu" path="res://Scripts/Slide.cs" id="6_piegi"]
 [ext_resource type="AudioStream" uid="uid://5uomfmmyn533" path="res://Assets/Sound/powerUp.wav" id="7_4f5kr"]
 [ext_resource type="PackedScene" uid="uid://bowyyooldjyif" path="res://Scenes/start_screen.tscn" id="7_8jye8"]
+[ext_resource type="AudioStream" uid="uid://d11vix4r413kb" path="res://Assets/Sound/laserShoot.wav" id="12_1a2va"]
+[ext_resource type="PackedScene" uid="uid://dgktk022u7squ" path="res://Scenes/initial_page.tscn" id="12_i2avg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ep0j"]
 
@@ -153,7 +155,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(276.076, -0.25, 0, 0.25, 0, 190, -0.2611, -2.62181, 0.2611, 2.94664, 720, -0.2075, -113.365, 0.25, 0),
+"points": PackedFloat32Array(276.076, -0.25, 0, 0.25, 0, 190, -0.2611, -2.62181, 0.2611, 2.94664, 720, -0.111111, -198.388, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4103, 1)
 }
 tracks/1/type = "bezier"
@@ -164,8 +166,8 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.2611, 3.61949, 720, -0.181, -61.1601, 0.25, 0),
-"times": PackedFloat32Array(0, 0.6341, 1.2)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.328863, 6.47479, 720, -0.168257, -100.203, 0.25, 0),
+"times": PackedFloat32Array(0, 0.55, 1.2)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -176,7 +178,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.0746, 0.00874794, 0.8, -0.1119, 0.0157748, 0.281787, 0.00352371, 1.2, -0.203113, -0.0245042, 0.25, 0),
-"times": PackedFloat32Array(0, 0.1119, 0.4103, 1.1936)
+"times": PackedFloat32Array(0, 0.1119, 0.4103, 1)
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -185,7 +187,7 @@ tracks/3/path = NodePath("StartScreen")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.32),
+"times": PackedFloat32Array(1.22222),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -317,7 +319,7 @@ metadata/_custom_type_script = "uid://jtx511pv7tyu"
 [node name="ColorRect" type="ColorRect" parent="Slides/SettingsSlide"]
 layout_mode = 1
 offset_right = 221.0
-offset_bottom = 263.0
+offset_bottom = 289.0
 color = Color(0.1836, 0.186207, 0.34, 0.929412)
 
 [node name="Settings" type="Label" parent="Slides/SettingsSlide/ColorRect"]
@@ -393,22 +395,41 @@ text = "10x12"
 [node name="SoundButton" type="CheckButton" parent="Slides/SettingsSlide/ColorRect/Settings"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-offset_top = 163.0
+offset_top = 148.0
 offset_right = 204.0
-offset_bottom = 221.0
+offset_bottom = 200.0
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/h_separation = 16
 theme_override_fonts/font = ExtResource("2_fccik")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 35
 button_pressed = true
 text = "Sounds"
 
+[node name="ParticlesButton" type="CheckButton" parent="Slides/SettingsSlide/ColorRect/Settings"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+offset_top = 197.0
+offset_right = 204.0
+offset_bottom = 244.0
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/h_separation = 16
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 35
+button_pressed = true
+text = "PARTICLES"
+
 [node name="Version" type="Label" parent="Slides/SettingsSlide/ColorRect/Settings"]
-layout_mode = 0
-offset_top = 225.0
-offset_right = 217.0
-offset_bottom = 245.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 202.0
+offset_right = 199.0
+offset_bottom = 222.0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_fccik")
 theme_override_font_sizes/font_size = 22
 
@@ -595,7 +616,13 @@ bus = &"Game"
 
 [node name="DropPickup" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_4f5kr")
-volume_db = -7.518
+volume_db = -4.0
+max_polyphony = 3
+bus = &"Game"
+
+[node name="Bullet" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_1a2va")
+volume_db = 1.0
 max_polyphony = 3
 bus = &"Game"
 
@@ -605,18 +632,28 @@ libraries = {
 }
 autoplay = "Default"
 
+[node name="InitialPage" parent="." instance=ExtResource("12_i2avg")]
+layout_mode = 1
+
 [node name="StartScreen" parent="." instance=ExtResource("7_8jye8")]
 layout_mode = 2
 anchors_preset = 0
 
 [node name="ColorRect" parent="StartScreen" index="0"]
+offset_top = 720.0
+offset_bottom = 720.0
 color = Color(0.1952, 0.2264, 0.32, 1)
 
 [node name="Title" parent="StartScreen" index="1"]
-offset_top = -83.924
-offset_bottom = 41.076
+offset_top = 360.0
+offset_bottom = 485.0
+scale = Vector2(1, 1.2)
 
 [node name="Label" parent="StartScreen" index="2"]
+modulate = Color(1, 1, 1, 0)
 text = "Click anywhere to play"
+
+[node name="LaunchButton" parent="StartScreen" index="3"]
+disabled = true
 
 [editable path="StartScreen"]

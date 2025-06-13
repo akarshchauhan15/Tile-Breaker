@@ -23,7 +23,7 @@ public partial class Hud : Control
         ScoreLabel = GetNode<Label>("Slides/SettingsSlide/ColorRect/Score");
         SoundButton = GetNode<CheckButton>("Slides/SettingsSlide/ColorRect/Settings/SoundButton");
 
-        GetNode<Button>("StartScreen/LaunchButton").Pressed += EnterGame;
+        GetNode<Button>("StartScreen/LaunchButton").Pressed += () => Anim.Play("EnterGame");
         SoundButton.Toggled += SoundButtonToggled;
 
         foreach (AudioStreamPlayer Audio in GetNode<Node>("Audio").GetChildren())
@@ -108,5 +108,4 @@ public partial class Hud : Control
         AudioServer.SetBusMute(1, !Value);
         ConfigController.SaveSetting("Settings", "Sounds", Value);
     }
-    private void EnterGame() => Anim.Play("EnterGame");
 }

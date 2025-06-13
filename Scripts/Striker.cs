@@ -83,6 +83,7 @@ public partial class Striker : CharacterBody2D
 
                 return;
             }
+            if (SettingsSlide.ParticlesEnabled)
             EmitParticles(Normal, Collider);
 
             if (tween != null)

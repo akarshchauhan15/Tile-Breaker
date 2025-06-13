@@ -11,12 +11,16 @@ public partial class ConfigController : Node
         if (!FileAccess.FileExists(path))
             ResetSettings();
         else
+        {
             config.Load(path);
+            GetTree().Root.GetNode<Control>("Main/HUD/InitialPage").QueueFree();
+        }
     }
     public static void ResetSettings()
     {
         config.SetValue("Settings", "Tileset", 0);
         config.SetValue("Settings", "Sounds", true);
+        config.SetValue("Settings", "Particles", true);
 
         config.Save(path);
     }

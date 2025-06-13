@@ -49,7 +49,7 @@ public partial class Main : CanvasLayer
         Random random = new Random();
         MainStriker.Direction = new Vector2((float)(random.NextSingle()-0.5), -1).Normalized();
 
-        Hud.ScoreLabel.Text = "0";
+
         HUD.GetNode<Button>("PlayButton").Hide();
         HUD.GetNode<Slide>("Slides/RetrySlide").Show();
     }
@@ -74,6 +74,8 @@ public partial class Main : CanvasLayer
 
         Player.Lives = 3;
         Player.Score = 0;
+        Hud.ScoreLabel.Text = "0";
+
         AddMainStriker(true);
 
         HUD.GetNode<Button>("PlayButton").Show();
@@ -84,7 +86,7 @@ public partial class Main : CanvasLayer
         if (Player.Lives <= 0)
             return;
 
-        MainStriker = (Striker)MainStrikerScene.Instantiate();
+        MainStriker = (Striker) MainStrikerScene.Instantiate();
         MainStriker.GlobalPosition = new Vector2(640, 580);
 
         GetNode<Node>("PlayingArea/Strikers").AddChild(MainStriker);

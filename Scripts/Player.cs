@@ -46,7 +46,7 @@ public partial class Player : CharacterBody2D
 
             Timer timer = new Timer();
             timer.OneShot = true;
-            timer.Timeout += OnTimerTimeout;
+            timer.Timeout += () => TransformSize(false); ;
 
             GetNode<Node>("Timers").AddChild(timer);
             timer.Start(10);     
@@ -74,8 +74,11 @@ public partial class Player : CharacterBody2D
         int Count = 2;
         float Disp = 70;
 
+        Hud HUD = main.GetNode<Hud>("HUD");
+
         while (Count > 0)
         {
+            HUD.PlaySound("Bullet");
             Bullet Bullet = BulletScene.Instantiate<Bullet>();
             Bullet.SetDeferred(Node2D.PropertyName.GlobalPosition, GlobalPosition + new Vector2(Disp, -20));
             main.GetNode<Node>("PlayingArea/Drops").CallDeferred(Node.MethodName.AddChild, Bullet);
@@ -89,6 +92,4 @@ public partial class Player : CharacterBody2D
         if (BulletCount > 0)
         GetNode<Timer>("BulletTimer").Start();
     }
-
-    private void OnTimerTimeout() => TransformSize(false);
 }

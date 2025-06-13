@@ -6,6 +6,8 @@ public partial class SettingsSlide : Slide
     public delegate void TilePresetChangedEventHandler();
 
     public static TilePreset[] AllTilePresets = [TilePresets.SEVENxSEVEN, TilePresets.EIGHTxNINE, TilePresets.TENxTEN, TilePresets.TENxTWELVE];
+    public static bool ParticlesEnabled;
+
     public override void _Ready()
     {
         base._Ready();
@@ -13,6 +15,12 @@ public partial class SettingsSlide : Slide
             button.Pressed += () => OnTileSetSelected(button.Name.ToString().ToInt() - 1);;
 
         GetNode<Label>("ColorRect/Settings/Version").Text = "VERSION " + ProjectSettings.GetSetting("application/config/version").ToString();
+
+        CheckButton ParticlesButton = GetNode<CheckButton>("ColorRect/Settings/ParticlesButton");
+        ParticlesButton.Toggled += SetParticles;
+
+        ParticlesButton.ButtonPressed = (bool)ConfigController.config.GetValue("Settings", "Particles", true);
+        ParticlesEnabled = (bool)ConfigController.config.GetValue("Settings", "Particles", true);
     }
     private void OnTileSetSelected(int Selected)
     {
@@ -23,5 +31,10 @@ public partial class SettingsSlide : Slide
         EmitSignal(SignalName.TilePresetChanged);
 
         ConfigController.SaveSetting("Settings", "Tileset", Selected);
+    }
+    private void SetParticles(bool Value)
+    {
+        ParticlesEnabled = Value;
+        ConfigController.SaveSetting("Settings", "Particles", Value);
     }
 }
