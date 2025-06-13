@@ -405,6 +405,7 @@ button_pressed = true
 text = "Sounds"
 
 [node name="Version" type="Label" parent="Slides/SettingsSlide/ColorRect/Settings"]
+layout_mode = 0
 offset_top = 225.0
 offset_right = 217.0
 offset_bottom = 245.0
@@ -517,6 +518,7 @@ theme_override_font_sizes/font_size = 36
 horizontal_alignment = 2
 
 [node name="NoScorePrompt" type="Label" parent="Slides/ScoreSlide/ColorRect"]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 69.0
@@ -604,7 +606,6 @@ libraries = {
 autoplay = "Default"
 
 [node name="StartScreen" parent="." instance=ExtResource("7_8jye8")]
-visible = false
 layout_mode = 2
 anchors_preset = 0
 
