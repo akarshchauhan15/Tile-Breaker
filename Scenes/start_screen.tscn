@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bowyyooldjyif"]
 
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="1_i8r30"]
-[ext_resource type="FontFile" uid="uid://cmxb8rjoyv082" path="res://Assets/Fonts/Roboto.ttf" id="2_ainjc"]
+[ext_resource type="FontFile" uid="uid://bjgovg84m6sxx" path="res://Assets/Fonts/Lexend-Medium.ttf" id="2_ainjc"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ainjc"]
 device = -1

@@ -14,7 +14,7 @@ config/name="Tile Breaker"
 config/version="v0.2.0"
 run/main_scene="uid://c1rbo4b2gt7yl"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cqavyg17katnj"
 
 [autoload]
 
