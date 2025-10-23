@@ -56,7 +56,7 @@ offset_right = 1238.0
 offset_bottom = 692.0
 theme_override_fonts/font = ExtResource("1_hqrgh")
 theme_override_font_sizes/font_size = 40
-text = "1/3"
+text = "1/5"
 horizontal_alignment = 2
 
 [node name="Pages" type="Control" parent="."]
@@ -172,7 +172,7 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("2_37ig4")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[outline_color=000000]ADDITIONAL [/outline_color][color=b751bc]I[/color][color=dc3d5a]N[/color][color=ec7200]F[/color][color=ced639]O[/color][color=3cc148]R[/color][color=325bcd]M[/color][color=7a29cf]A[/color][color=b74545]T[/color][color=ec7200]I[/color][color=ced639]O[/color][color=3cc148]N[/color]"
+text = "[outline_color=000000]SETTINGS [/outline_color][color=dc3d5a]M[/color][color=ced639]E[/color][color=3cc148]N[/color][color=325bcd]U[/color]"
 fit_content = true
 autowrap_mode = 0
 
@@ -187,7 +187,96 @@ theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("1_hqrgh")
 theme_override_font_sizes/font_size = 30
-text = "The game's source code is freely availiable on Github.
+text = "Settings menu or rather \"slide\" contains options to set -
+
+Tile preset.
+Window mode, that is, either fullscreen or windowed
+Particles effect on collision.
+Sound effects.
+
+And displays current version of game."
+autowrap_mode = 2
+
+[node name="4" type="Control" parent="Pages"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Breaker" type="RichTextLabel" parent="Pages/4"]
+clip_contents = false
+layout_mode = 1
+offset_left = 38.0
+offset_top = 37.0
+offset_right = 913.0
+offset_bottom = 112.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.167969, 0.167969, 0.167969, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("2_37ig4")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[outline_color=000000]EXTRA [/outline_color][color=b751bc]T[/color][color=dc3d5a]W[/color][color=ec7200]E[/color][color=ced639]A[/color][color=3cc148]K[/color][color=325bcd]S[/color]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Label" type="Label" parent="Pages/4"]
+layout_mode = 1
+offset_left = 59.0
+offset_top = 224.0
+offset_right = 1186.0
+offset_bottom = 467.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.470588)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_hqrgh")
+theme_override_font_sizes/font_size = 30
+text = "At the location, where the game is present, a file by the name of 'settings.ini' is created.
+
+This file can be tweaked by changing values present, altering gameplay experience.
+
+Deleting the file will reset settings to default and similarly doing the same with 'scores.json' will remove previous scores."
+autowrap_mode = 2
+
+[node name="5" type="Control" parent="Pages"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Breaker" type="RichTextLabel" parent="Pages/5"]
+clip_contents = false
+layout_mode = 1
+offset_left = 38.0
+offset_top = 37.0
+offset_right = 913.0
+offset_bottom = 112.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.167969, 0.167969, 0.167969, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("2_37ig4")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[outline_color=000000]ADDITIONAL [/outline_color][color=b751bc]I[/color][color=dc3d5a]N[/color][color=ec7200]F[/color][color=ced639]O[/color][color=3cc148]R[/color][color=325bcd]M[/color][color=7a29cf]A[/color][color=b74545]T[/color][color=ec7200]I[/color][color=ced639]O[/color][color=3cc148]N[/color]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Label" type="Label" parent="Pages/5"]
+layout_mode = 1
+offset_left = 59.0
+offset_top = 224.0
+offset_right = 1186.0
+offset_bottom = 467.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.470588)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_hqrgh")
+theme_override_font_sizes/font_size = 30
+text = "The game's source code is freely availiable on Github under MIT licence.
 
 Report any bugs or suggest a new feature in issues tab.
 
@@ -205,6 +294,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+metadata/_edit_lock_ = true
 
 [node name="PreviousButton" type="Button" parent="."]
 visible = false

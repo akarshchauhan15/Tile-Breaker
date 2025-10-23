@@ -564,7 +564,7 @@ offset_right = 266.0
 offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("2_fccik")
 theme_override_font_sizes/font_size = 26
-text = "No previos high scores are found.
+text = "No previous high scores are found.
 
 Try playing few rounds to add some to the list."
 autowrap_mode = 2

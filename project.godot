@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tile Breaker"
-config/version="v0.2.0"
+config/version="v0.2.1"
 run/main_scene="uid://c1rbo4b2gt7yl"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 run/max_fps=60
