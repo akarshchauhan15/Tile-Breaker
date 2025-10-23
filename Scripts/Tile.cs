@@ -178,43 +178,10 @@ public partial class Tile : StaticBody2D
         int TileTag = random.Next(1, 15);
         int TileDrop = random.Next(1, 20);
 
-        switch (TileTag)
-        {
-            case 1:
-            tileTag = TileData.TileTag.NewStriker;
-            break;
-
-            case 2:
-            tileTag = TileData.TileTag.Explosion;
-            break;
-
-            case 3:
-            tileTag = TileData.TileTag.CrossExplosion;
-            break;
-
-            case 4:
-            tileTag = TileData.TileTag.Respawn;
-            break;
-
-            case 5:
-            tileTag = TileData.TileTag.CrossRespawn;
-            break;
-        }
-        switch (TileDrop)
-        {
-            case 1:
-                tileDrop = TileData.TileDrop.Saver;
-                break;
-            case 2:
-                tileDrop = TileData.TileDrop.Extender;
-                break;
-            case 3:
-                tileDrop = TileData.TileDrop.Rigidify;
-                break;
-            case 4:
-                tileDrop = TileData.TileDrop.Bullet;
-                break;
-        }
+        if (TileTag <= 5)
+            tileTag = (TileData.TileTag)TileTag;
+        if (TileDrop <= 4)
+            tileDrop = (TileData.TileDrop)TileDrop;
     }
     private void OnTweenFinished()
     {

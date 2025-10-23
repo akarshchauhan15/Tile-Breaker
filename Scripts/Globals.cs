@@ -64,12 +64,12 @@ public class TilePreset
 
         OccluderPolygon2D occluderPolygon2D = new OccluderPolygon2D();
 
-        occluderPolygon2D.Polygon = new Vector2[] {
+        occluderPolygon2D.Polygon = [
             new Vector2(- TileSize.X/2, - TileSize.Y/2),
             new Vector2(- TileSize.X/2,  TileSize.Y/2),
             new Vector2( TileSize.X/2,  TileSize.Y/2),
             new Vector2( TileSize.X/2, - TileSize.Y/2),
-        };
+        ];
 
         tile.GetNode<LightOccluder2D>("LightOccluder2D").Occluder = occluderPolygon2D;
     }

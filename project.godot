@@ -13,7 +13,8 @@ config_version=5
 config/name="Tile Breaker"
 config/version="v0.2.0"
 run/main_scene="uid://c1rbo4b2gt7yl"
-config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+run/max_fps=60
 config/icon="uid://cqavyg17katnj"
 
 [autoload]
@@ -25,7 +26,6 @@ ConfigController="*res://Scripts/ConfigController.cs"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
 
 [dotnet]
 
