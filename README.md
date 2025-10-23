@@ -4,6 +4,7 @@
 - Download the latest verison of Tile Breaker from releases page.
 - The game is portable, hence, no installation needed, just open and begin playing.
 - Click anywhere or press Enter to start.
+- Read or skip the initial guide provided.
 - Hover mouse cursor on top right corner for the retry option to appear.
 - Hover mouse cursor on top left corner for the settings option to appear.
 - Hover mouse cursor on bottom left corner for the high scores menu to appear.
@@ -21,7 +22,7 @@
 Tile Breaker is a retro style arcade like game based on Breakout (1976) by Atari with features and graphical improvements.
 
 ### Inspiration
-Breakout by Atari
+**Breakout** by Atari
 
 ### Platform
 Windows and Linux
@@ -33,16 +34,16 @@ Arcade and Retro
 People who want to experience a Breakout like game again.
 
 ### Development Software
-- Godot 4 for game engine.
-- Visual Studio for IDE.
-- Inkscape for vector graphics.
+- **Godot 4** for game engine.
+- **Visual Studio** for IDE.
+- **Inkscape** for vector graphics.
 
 ## Concept
 
 ### Gameplay overview
-The game consists of a grid of tiles, a primary striker and a paddle (which is in control of the player). The player moves the paddle to bounce off the striker and make them collide with a tile. On collsion, a tile is destroyed and may initiate effects or summon a pickable drop
+The game consists of a grid of tiles, a primary striker and a paddle. The player moves the paddle to bounce off the striker and make them collide with a tile. On collsion, a tile is destroyed and may initiate effects or summon a pickable drop.
 
-Game declares victory if all the tiles are destroyed, but, if all the strikers fall below the screen, the player loses. Activiies like destroying tiles and collecting drops contribute to total score.
+Game declares victory if all the tiles are destroyed, but, if all the strikers fall below the screen, the player loses. Activities like destroying tiles and collecting drops contribute to total score.
 
 ### Navigating UI
 - The game can be restarted by hovering the mouse near top-right corner and clicking twice.
@@ -57,3 +58,22 @@ The game features proximity panels, that appear when cursor is hovered near corn
 
 ### Controls
 Currently, the whole game is to be operated with a mouse only. The support for keyboard and gamepad will be added in later releases.
+
+## Game Mechanics
+
+### Drops
+If a tile is hit, it may summon a drop. Drops simply are physical pickable powers. Their effects are initiated as soon as the paddle collides with it.
+
+#### Drop Types
+- Saver - Grants one temporary save for each striker. If active, the striker bounces off the bottom edge instead of going through. Lasts one time and is indicated by green.
+- Ridigify - Makes all strikers hard and heavy, so that they smash through the tile without reversing direction. Lasts for a few collision till the striker cools down. Indicated by flaming red hot striker.
+- Extend - Extends the lengths of paddle for few seconds.
+- Gun - The paddle fires a few rounds of pair of bullets that destroy tiles.
+
+### Tile Effects
+If a tile is hit, it has a few chance to initiate an effect.
+
+#### Tile Effects Types
+- New Striker - Adds a new striker into the arena.
+- Explosion - Removes either adjacent or all tiles of the row and column of the tile.
+- Respawn - Revives either adjacent or all tiles of the row and column of the tile.
