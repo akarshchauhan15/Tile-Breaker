@@ -4,10 +4,8 @@
 [ext_resource type="FontFile" uid="uid://bjgovg84m6sxx" path="res://Assets/Fonts/Lexend-Medium.ttf" id="1_hqrgh"]
 [ext_resource type="FontFile" uid="uid://b2auwj34ur0bf" path="res://Assets/Fonts/AldotheApache.ttf" id="2_37ig4"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37ig4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2teh5"]
-bg_color = Color(0.297, 0.330733, 0.55, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gk4j"]
+bg_color = Color(0.2322, 0.258573, 0.43, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -22,13 +20,15 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.196533, 0.211995, 0.3125, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gk4j"]
-bg_color = Color(0.2322, 0.258573, 0.43, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2teh5"]
+bg_color = Color(0.297, 0.330733, 0.55, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.196533, 0.211995, 0.3125, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37ig4"]
 
 [node name="InitialPage" type="Control"]
 layout_mode = 3
@@ -78,9 +78,9 @@ offset_right = 942.0
 offset_bottom = 112.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.167969, 0.167969, 0.167969, 1)
-theme_override_constants/outline_size = 6
-theme_override_constants/shadow_offset_y = 10
 theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("2_37ig4")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -121,9 +121,9 @@ offset_right = 963.0
 offset_bottom = 112.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.167969, 0.167969, 0.167969, 1)
-theme_override_constants/outline_size = 6
-theme_override_constants/shadow_offset_y = 10
 theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("2_37ig4")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -166,9 +166,9 @@ offset_right = 913.0
 offset_bottom = 112.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.167969, 0.167969, 0.167969, 1)
-theme_override_constants/outline_size = 6
-theme_override_constants/shadow_offset_y = 10
 theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 6
 theme_override_fonts/normal_font = ExtResource("2_37ig4")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
@@ -219,8 +219,8 @@ offset_bottom = -28.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_hqrgh")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/focus = SubResource("StyleBoxEmpty_37ig4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2teh5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0xvgg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8gk4j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0xvgg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2teh5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_37ig4")
 text = "PREVIOUS"

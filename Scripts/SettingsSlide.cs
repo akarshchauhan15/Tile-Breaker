@@ -7,8 +7,10 @@ public partial class SettingsSlide : Slide
 
     public static TilePreset[] AllTilePresets = [TilePresets.SEVENxSEVEN, TilePresets.EIGHTxNINE, TilePresets.TENxTEN, TilePresets.TENxTWELVE];
     public static bool ParticlesEnabled;
+    bool Fullscreen = false;
 
     CheckButton ParticlesButton;
+    Button WindowModeButton;
 
     public override void _Ready()
     {
@@ -19,7 +21,9 @@ public partial class SettingsSlide : Slide
         GetNode<Label>("ColorRect/Settings/Version").Text = "VERSION " + ProjectSettings.GetSetting("application/config/version").ToString();
 
         ParticlesButton = GetNode<CheckButton>("ColorRect/Settings/ParticlesButton");
+        WindowModeButton = GetNode<Button>("ColorRect/Settings/WindowModeButton");
         ParticlesButton.Toggled += SetParticles;
+        WindowModeButton.Pressed += ToggleWindowType;
 
         SetSettings();
     }
@@ -45,5 +49,11 @@ public partial class SettingsSlide : Slide
     {
         ParticlesEnabled = Value;
         ConfigController.SaveSetting("Settings", "Particles", Value);
+    }
+    private void ToggleWindowType()
+    {
+        Fullscreen = !Fullscreen;
+        DisplayServer.WindowSetMode(Fullscreen ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
+        WindowModeButton.Text = Fullscreen ? "WINDOWED" : "FULLSCREEN";
     }
 }
